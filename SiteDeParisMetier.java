@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * 
- * @author Bernard Prou et Julien Mallet lucas borra
+ * @author Bernard Prou et Julien Mallet lucas perez
  * <br><br>
  * La classe qui contient toutes les méthodes "Métier" de la gestion du site de paris. 
  * <br><br>
