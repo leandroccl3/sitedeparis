@@ -157,31 +157,31 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	}
    
     public SiteDeParisMetier(String nomJoueur, String prenomJoueur, String pseudoJoueur) throws MetierException {
-	    for (i=1; i < listaNom.size(); i++ ){ 
+	    for (i=0; i < listaNom.size(); i++ ){ 
 		    if (nomJoueur == listaNom(i)){
 			    if (prenomJoueur == listaPrenom(i)){
-				    throw new MetierException("ya existe un jugador con ese nombre y apellido ");
+				    throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");
 			    }
-		    }
-		    if (pseudoJoueur == listaPseudo(i)){
-			    throw new MetierException("ya existe un jugador con ese Pseudonimo");
-		    }
+	    	     }
 	    }
     }
-     
+//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
+//nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
+
      
        
 
      
       public SiteDeParisMetier(String pseudoJoueur) throws MetierException {
-      for (i=1; i < listaPseudo.size(); i++ ){ 
+      for (i=0; i < listaPseudo.size(); i++ ){ 
           if (pseudoJoueur == listaPseudo(i)){
           throw new MetierException("ya existe un jugador con ese pseudonimo "); 
 
 	      }
        }
      }
-
+//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
+//pseudonimos, la persona a inscribirse posee el mismo pesudonimo
 
    
    
