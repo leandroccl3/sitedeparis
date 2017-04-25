@@ -59,15 +59,23 @@ linkedList <String> listaPrenom = new linkedList();
      
      
 linkedList <String> listaPseudo = new linkedList();
-     listaNom.add("pepito"); 
-     listaNom.add("co");
-     listaNom.add("to");
-     listaNom.add("ramono");
+        listaNom.add("pepito"); 
+        listaNom.add("co");
+        listaNom.add("to");
+        listaNom.add("ramono");
      
      
 linkedList <String> listaPass = new linkedList();
-     listaPass.add("1234");     
+        listaPass.add("1234");     
 
+	
+linkedList <String> listaComp = new linkedList(),
+	listaComp.add("basquet");
+	listaComp.add("tennis");
+	listaComp.add("fútbol");
+	listaComp.add("rugby");
+	
+	
 	/**
 	 * constructeur de <code>SiteDeParisMetier</code>. 
 	 * 
@@ -157,31 +165,31 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	}
    
     public SiteDeParisMetier(String nomJoueur, String prenomJoueur, String pseudoJoueur) throws MetierException {
-	    for (i=0; i < listaNom.size(); i++ ){ 
+	    for (i=1; i < listaNom.size(); i++ ){ 
 		    if (nomJoueur == listaNom(i)){
 			    if (prenomJoueur == listaPrenom(i)){
-				    throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");
+				    throw new MetierException("ya existe un jugador con ese nombre y apellido ");
 			    }
-	    	     }
+		    }
+		    if (pseudoJoueur == listaPseudo(i)){
+			    throw new MetierException("ya existe un jugador con ese Pseudonimo");
+		    }
 	    }
     }
-//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
-//nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
-
+     
      
        
 
      
       public SiteDeParisMetier(String pseudoJoueur) throws MetierException {
-      for (i=0; i < listaPseudo.size(); i++ ){ 
+      for (i=1; i < listaPseudo.size(); i++ ){ 
           if (pseudoJoueur == listaPseudo(i)){
           throw new MetierException("ya existe un jugador con ese pseudonimo "); 
 
 	      }
        }
      }
-//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
-//pseudonimos, la persona a inscribirse posee el mismo pesudonimo
+
 
    
    
@@ -250,7 +258,7 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	 * 
 	 * @throws MetierException levée si le tableau des
 	 * compétiteurs n'est pas instancié, si le
-	 * <code>passwordGestionnaire</code> est invalide, si le
+	 * <code>passwordGestionnaire</code> est invalide, si le------------------
 	 * <code>passwordGestionnaire</code> est incorrect.
 	 * @throws CompetitionExistanteException levée si une compétition existe avec le même nom. 
 	 * @throws CompetitionException levée si le nom de la
@@ -262,6 +270,19 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	public void ajouterCompetition(String competition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException  {
 
 	}
+	   
+	 public SiteDeParisMetier (String competition) throws CompetitionExistanteException {
+		 for (i=0, i<listaComp,i++){
+		   if (competition == listaComp[i]) {
+		   	
+		   }
+		 
+		 }
+	 
+	 }
+	   
+	   
+	   
 
 
 	/**
