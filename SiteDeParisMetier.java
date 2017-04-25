@@ -59,15 +59,23 @@ linkedList <String> listaPrenom = new linkedList();
      
      
 linkedList <String> listaPseudo = new linkedList();
-     listaNom.add("pepito"); 
-     listaNom.add("co");
-     listaNom.add("to");
-     listaNom.add("ramono");
+        listaNom.add("pepito"); 
+        listaNom.add("co");
+        listaNom.add("to");
+        listaNom.add("ramono");
      
      
 linkedList <String> listaPass = new linkedList();
-     listaPass.add("1234");     
+        listaPass.add("1234");     
 
+	
+linkedList <String> listaComp = new linkedList(),
+	listaComp.add("basquet");
+	listaComp.add("tennis");
+	listaComp.add("fútbol");
+	listaComp.add("rugby");
+	
+	
 	/**
 	 * constructeur de <code>SiteDeParisMetier</code>. 
 	 * 
@@ -133,7 +141,7 @@ linkedList <String> listaPass = new linkedList();
 	public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
 		return "unPasswordUnique";
 	}
-	   
+ 
 	   
   
 	public SiteDeParisMetier(String nomJoueur, String prenomJoueur) throws JoueurExistantException {
@@ -163,6 +171,7 @@ linkedList <String> listaPass = new linkedList();
 	}
 //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
 //pseudonimos, la persona a inscribirse posee el mismo pesudonimo
+
 
    
    
@@ -231,7 +240,7 @@ linkedList <String> listaPass = new linkedList();
 	 * 
 	 * @throws MetierException levée si le tableau des
 	 * compétiteurs n'est pas instancié, si le
-	 * <code>passwordGestionnaire</code> est invalide, si le
+	 * <code>passwordGestionnaire</code> est invalide, si le------------------
 	 * <code>passwordGestionnaire</code> est incorrect.
 	 * @throws CompetitionExistanteException levée si une compétition existe avec le même nom. 
 	 * @throws CompetitionException levée si le nom de la
@@ -243,6 +252,19 @@ linkedList <String> listaPass = new linkedList();
 	public void ajouterCompetition(String competition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException  {
 
 	}
+	   
+	 public SiteDeParisMetier (String competition) throws CompetitionExistanteException {
+		 for (i=0, i<listaComp,i++){
+		   if (competition == listaComp[i]) {
+		   	
+		   }
+		 
+		 }
+	 
+	 }
+	   
+	   
+	   
 
 
 	/**
