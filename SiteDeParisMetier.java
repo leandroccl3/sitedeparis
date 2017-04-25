@@ -5,9 +5,7 @@ import java.util.LinkedList;
 
 /**
  * 
-
- * @author Bernard Prou et Julien Mallet lucas perez
-
+ * @author Bernard Prou et Julien Mallet lucas cristobal
  * <br><br>
  * La classe qui contient toutes les méthodes "Métier" de la gestion du site de paris. 
  * <br><br>
@@ -157,7 +155,7 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	}
    
     public SiteDeParisMetier(String nomJoueur, String prenomJoueur, String pseudoJoueur) throws MetierException {
-	    for (i=1; i < listaNom.size(); i++ ){ 
+	    for (i=0; i < listaNom.size(); i++ ){ 
 		    if (nomJoueur == listaNom(i)){
 			    if (prenomJoueur == listaPrenom(i)){
 				    throw new MetierException("ya existe un jugador con ese nombre y apellido ");
@@ -172,17 +170,7 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
      
        
 
-     
-      public SiteDeParisMetier(String pseudoJoueur) throws MetierException {
-      for (i=1; i < listaPseudo.size(); i++ ){ 
-          if (pseudoJoueur == listaPseudo(i)){
-          throw new MetierException("ya existe un jugador con ese pseudonimo "); 
-
-	      }
-       }
-     }
-
-
+    
    
    
    /**
