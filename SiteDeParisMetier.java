@@ -77,54 +77,32 @@ linkedList <String> listaPass = new linkedList();
 	 * si le <code>passwordGestionnaire</code>  est invalide 
 	 */
 	public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-   if (passwordGestionnaire==null){
-      throw new MetierException(); 
+   if (passwordGestionnaire==null) || (passwordGestionnaire.length()<8){
+      throw new MetierException("Password Gestionaire no debe ser nulo ni menor a 8 caracteres"); 
    }
-   
-   public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-   if (passwordGestionnaire.length()<8){
-      throw new MetierException(); 
-   }
-      
+		//Lanza una excepcion si el password del gestionario 
+         
    public SiteDeParisMetier(String passwordJoueur) throws MetierException {
-   if (passwordJoueur==null){
-      throw new MetierException(); 
-   }
-   
-   public SiteDeParisMetier(String passwordJoueur) throws MetierException {
-   if (passwordJoueur.length()<8){
-      throw new MetierException(); 
-   }
+   if (passwordJoueur==null) || (passwordJoueur.length()<8){
+      throw new MetierException("El Password Joueur no debe ser nulo ni menor a 8 caracteres"); 
 
-      public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-   if (passwordGestionnaire==null){
-      throw new MetierException(); 
-   }
-   
-   public SiteDeParisMetier(String Gestionnaire) throws MetierException {
-   if (passwordGestionnaire.length()<8){
-      throw new MetierException(); 
-   }
    public SiteDeParisMetier(String nomJoueur) throws MetierException {
    if (nomJoueur.lenght()<=4){
-      throw new MetierException(); 
+      throw new MetierException("El nombre del jugador no debe ser ni menor a 4 caracteres"); 
    }
    public SiteDeParisMetier(String nomJoueur) throws MetierException {
-   if ((nomJoueur)evt.getKeyChar()>=65 ^ (nomJoueur)evt.getKeyChar()<=90) ^ (nomJoueur)evt.getKeyChar()>=97 ^ (nomJoueur)evt.getKeyChar()<=122) ^ (nomJoueur)evt.getKeyChar()=45))
-      throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,-,]"); 
+   if (not((nomJoueur)evt.getKeyChar()>=65 & (nomJoueur)evt.getKeyChar()<=90) & (nomJoueur)evt.getKeyChar()>=97 & (nomJoueur)evt.getKeyChar()<=122) && (nomJoueur)evt.getKeyChar()=45)))
+	   throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,-,]"); 
    }
 	
    public SiteDeParisMetier(String nomCompetition) throws MetierException {
-   if ((nomCompetition)evt.getKeyChar()>=65 ^ (nomCompetition)evt.getKeyChar()<=90) ^ (nomCompetition)evt.getKeyChar()>=97 ^ (nomCompetition)evt.getKeyChar()<=122) ^ (nomCompetition)evt.getKeyChar()>=48 ^ (nomCompetition)evt.getKeyChar()<=57) ^ (nomCompetition)evt.getKeyChar()=45) ^ (nomCompetition)evt.getKeyChar()=46) ^ (nomCompetition)evt.getKeyChar()=95) ^ (nomCompetition)evt.getKeyChar()=126) )
+   if (not(((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122)) && ((nomCompetition)evt.getKeyChar()>=48 || (nomCompetition)evt.getKeyChar()<=57)) || (nomCompetition)evt.getKeyChar()=45) || (nomCompetition)evt.getKeyChar()=46) || (nomCompetition)evt.getKeyChar()=95)))
       throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,0-9,.,_,-,~]"); 
    }
-
-public SiteDeParisMetier(String nomCompetition) throws MetierException {
-   if ((nomCompetition)evt.getKeyChar()>=65 ^ (nomCompetition)evt.getKeyChar()<=90) ^ (nomCompetition)evt.getKeyChar()>=97 ^ (nomCompetition)evt.getKeyChar()<=122) ^ (nomCompetition)evt.getKeyChar()>=48 ^ (nomCompetition)evt.getKeyChar()<=57) ^ (nomCompetition)evt.getKeyChar()=45) ^ (nomCompetition)evt.getKeyChar()=95) ^ (nomCompetition)evt.getKeyChar()=126) )
-      throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,_,-,~]"); 
-   }
-
-
+	   public SiteDeParisMetier(String passwordJoueur) throws MetierException {
+		if (not(((nomCompetition)evt.getKeyChar()>=48 && (nomCompetition)evt.getKeyChar()<=57)) || ((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122))))
+			throw new MetierException("caracter erroneo (Los caracteres autorizados son [a-z,A-Z,0-9]");
+	}
    }
    
 
@@ -155,31 +133,34 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 	public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
 		return "unPasswordUnique";
 	}
-   
-    public SiteDeParisMetier(String nomJoueur, String prenomJoueur, String pseudoJoueur) throws MetierException {
-	    for (i=0; i < listaNom.size(); i++ ){ 
-		    if (nomJoueur == listaNom(i)){
-			    if (prenomJoueur == listaPrenom(i)){
-				    throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");
-			    }
-	    	     }
-	    }
-    }
+	   
+	   
+  
+	public SiteDeParisMetier(String nomJoueur, String prenomJoueur) throws JoueurExistantException {
+		for (i=0; i < listaNom.size(); i++ ){ 
+			if (nomJoueur == listaNom(i)){
+				if (prenomJoueur == listaPrenom(i)){
+					throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");
+				}
+			}
+		}
+	}
+	   
+	   
+	   
 //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
 //nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
 
      
        
 
-     
-      public SiteDeParisMetier(String pseudoJoueur) throws MetierException {
-      for (i=0; i < listaPseudo.size(); i++ ){ 
-          if (pseudoJoueur == listaPseudo(i)){
-          throw new MetierException("ya existe un jugador con ese pseudonimo "); 
-
-	      }
-       }
-     }
+     	public SiteDeParisMetier(String pseudoJoueur) throws JoueurExistantException {
+		for (i=0; i < listaPseudo.size(); i++ ){ 
+			if (pseudoJoueur == listaPseudo(i)){
+				throw new MetierException("ya existe un jugador con ese pseudonimo ");
+			}
+		}
+	}
 //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
 //pseudonimos, la persona a inscribirse posee el mismo pesudonimo
 
