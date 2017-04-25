@@ -37,6 +37,7 @@ import java.util.LinkedList;
  *  <li>       lettres, chiffres, trait d'union et souligné sont les seuls caractères autorisés </li>
  *  <li>      il doit avoir une longueur d'au moins 4 caractères.</li>
  * </ul></li></ul>
+ *Agrego un comentario
  */
 
 public class SiteDeParisMetier {
