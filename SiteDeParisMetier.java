@@ -154,24 +154,22 @@ public SiteDeParisMetier(String nomCompetition) throws MetierException {
 		return "unPasswordUnique";
 	}
    
-    public SiteDeParisMetier(String nomJoueur) throws MetierException {
-      for (i=1; i < listaNom.size(); i++ ){ 
-          if (nomJoueur == listaNom(i)){
-          throw new MetierException("ya existe un jugador con ese apellido "); 
-
-	      }
-       }
-     }
+    public SiteDeParisMetier(String nomJoueur, String prenomJoueur, String pseudoJoueur) throws MetierException {
+	    for (i=1; i < listaNom.size(); i++ ){ 
+		    if (nomJoueur == listaNom(i)){
+			    if (prenomJoueur == listaPrenom(i)){
+				    throw new MetierException("ya existe un jugador con ese nombre y apellido ");
+			    }
+		    }
+		    if (pseudoJoueur == listaPseudo(i)){
+			    throw new MetierException("ya existe un jugador con ese Pseudonimo");
+		    }
+	    }
+    }
      
      
-     public SiteDeParisMetier(String prenomJoueur) throws MetierException {
-      for (i=1; i < listaPrenom.size(); i++ ){ 
-          if (prenomJoueur == listaPrenom(i)){
-          throw new MetierException("ya existe un jugador con ese nombre "); 
+       
 
-	      }
-       }
-     }
      
       public SiteDeParisMetier(String pseudoJoueur) throws MetierException {
       for (i=1; i < listaPseudo.size(); i++ ){ 
