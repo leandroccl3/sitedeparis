@@ -84,36 +84,55 @@ linkedList <String> listaComp = new linkedList(),
 	 * @throws MetierException  levée 
 	 * si le <code>passwordGestionnaire</code>  est invalide 
 	 */
-	public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-   if (passwordGestionnaire==null) || (passwordGestionnaire.length()<8){
-      throw new MetierException("Password Gestionaire no debe ser nulo ni menor a 8 caracteres"); 
-   }
-		//Lanza una excepcion si el password del gestionario 
-         
-   public SiteDeParisMetier(String passwordJoueur) throws MetierException {
-   if (passwordJoueur==null) || (passwordJoueur.length()<8){
-      throw new MetierException("El Password Joueur no debe ser nulo ni menor a 8 caracteres"); 
-
-   public SiteDeParisMetier(String nomJoueur) throws MetierException {
-   if (nomJoueur.lenght()<=4){
-      throw new MetierException("El nombre del jugador no debe ser ni menor a 4 caracteres"); 
-   }
-   public SiteDeParisMetier(String nomJoueur) throws MetierException {
-   if (not((nomJoueur)evt.getKeyChar()>=65 & (nomJoueur)evt.getKeyChar()<=90) & (nomJoueur)evt.getKeyChar()>=97 & (nomJoueur)evt.getKeyChar()<=122) && (nomJoueur)evt.getKeyChar()=45)))
-	   throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,-,]"); 
-   }
-	
-   public SiteDeParisMetier(String nomCompetition) throws MetierException {
-   if (not(((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122)) && ((nomCompetition)evt.getKeyChar()>=48 || (nomCompetition)evt.getKeyChar()<=57)) || (nomCompetition)evt.getKeyChar()=45) || (nomCompetition)evt.getKeyChar()=46) || (nomCompetition)evt.getKeyChar()=95)))
-      throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,0-9,.,_,-,~]"); 
-   }
-	   public SiteDeParisMetier(String passwordJoueur) throws MetierException {
-		if (not(((nomCompetition)evt.getKeyChar()>=48 && (nomCompetition)evt.getKeyChar()<=57)) || ((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122))))
-			throw new MetierException("caracter erroneo (Los caracteres autorizados son [a-z,A-Z,0-9]");
+public SiteDeParisMetier(String passwordGestionnaire) throws MetierException{
+	if (passwordGestionnaire==null) || (passwordGestionnaire.length()<8){
+		throw new MetierException("Password Gestionaire no debe ser nulo ni menor a 8 caracteres");
 	}
-   }
+}
+		
+//Lanza una excepcion si el password del gestionario tiene una longitud menor a 8 caracteres. 
+         
+public SiteDeParisMetier(String passwordJoueur) throws MetierException {
+	if (passwordJoueur==null) || (passwordJoueur.length()<8){
+		throw new MetierException("El Password Joueur no debe ser nulo ni menor a 8 caracteres"); 
+	}
+}
+
+//Lanza una excepcion si el password del jugador tiene una longitud menor a 8 caracteres. 
+
+public SiteDeParisMetier(String nomJoueur) throws MetierException {
+	if (nomJoueur.lenght()<=4){
+		throw new MetierException("El nombre del jugador no debe ser ni menor a 4 caracteres"); 
+	}
+}
+	
+//Lanza una excepcion si el nombre del jugador tiene una longitud menor a 4 caracteres. 
+
+public SiteDeParisMetier(String nomJoueur) throws MetierException {
+	if (not((nomJoueur)evt.getKeyChar()>=65 & (nomJoueur)evt.getKeyChar()<=90) & (nomJoueur)evt.getKeyChar()>=97 & (nomJoueur)evt.getKeyChar()<=122) && (nomJoueur)evt.getKeyChar()=45))){
+		throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,-]");
+	}
+}
+
+//Lanza una excepcion si el password del gestionario tiene caracteres diferentes a [a-z,A-Z,-]. 	
+	
+public SiteDeParisMetier(String nomCompetition) throws MetierException {
+	if (not(((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122)) && ((nomCompetition)evt.getKeyChar()>=48 || (nomCompetition)evt.getKeyChar()<=57)) || (nomCompetition)evt.getKeyChar()=45) || (nomCompetition)evt.getKeyChar()=46) || (nomCompetition)evt.getKeyChar()=95))){
+		throw new MetierException("caracter erroneo(caracteres autorizados [a-z,A-Z,0-9,.,_,-,~]");
+	}
+}
+	
+
+//Lanza una excepcion si el password del gestionario tiene caracteres diferentes a [a-z,A-Z,0-9,.,_,-,~]. 	
+
+public SiteDeParisMetier(String passwordJoueur) throws MetierException {
+	if (not(((nomCompetition)evt.getKeyChar()>=48 && (nomCompetition)evt.getKeyChar()<=57)) || ((nomCompetition)evt.getKeyChar()>=65 && (nomCompetition)evt.getKeyChar()<=90)) || ((nomCompetition)evt.getKeyChar()>=97 && (nomCompetition)evt.getKeyChar()<=122)))){
+		throw new MetierException("caracter erroneo (Los caracteres autorizados son [a-z,A-Z,0-9]");
+	}
+}
    
 
+//Lanza una excepcion si el password del gestionario tiene caracteres diferentes a [a-z,A-Z,0-9]
 
 
 
@@ -133,49 +152,44 @@ linkedList <String> listaComp = new linkedList(),
 	 * @throws MetierException   levée  
 	 * si le <code>passwordGestionnaire</code> proposé est invalide,
 	 * si le <code>passwordGestionnaire</code> est incorrect.
-	 * @throws JoueurExistantException   levée si un joueur existe avec les mêmes noms et prénoms ou le même pseudo.
+
+
+
+* @throws JoueurExistantException   levée si un joueur existe avec les mêmes noms et prénoms ou le même pseudo.
 	 * @throws JoueurException levée si <code>nom</code>, <code>prenom</code>, <code>pseudo</code> sont invalides.
 	 * 
 	 * @return le mot de passe (déterminé par le site) du nouveau joueur inscrit.
 	 */
-	public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
-		return "unPasswordUnique";
-	}
+public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
+	return "unPasswordUnique";
+}
  
 	   
   
-	public SiteDeParisMetier(String nomJoueur, String prenomJoueur) throws JoueurExistantException {
-		for (i=0; i < listaNom.size(); i++ ){ 
-			if (nomJoueur == listaNom(i)){
-				if (prenomJoueur == listaPrenom(i)){
-					throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");
-				}
-			}
+public SiteDeParisMetier(String nomJoueur, String prenomJoueur) throws JoueurExistantException {
+	for (i=0; i < listaNom.size(); i++ ){ 
+		if (nomJoueur == listaNom(i)){
+			if (prenomJoueur == listaPrenom(i)){
+				throw new MetierException("ya existe un jugador con ese Nombre y Apellido ");}
 		}
 	}
-	   
-	   
-	   
+}
+	    
 //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
 //nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
 
-     
-       
-
-     	public SiteDeParisMetier(String pseudoJoueur) throws JoueurExistantException {
-		for (i=0; i < listaPseudo.size(); i++ ){ 
-			if (pseudoJoueur == listaPseudo(i)){
-				throw new MetierException("ya existe un jugador con ese pseudonimo ");
-			}
+public SiteDeParisMetier(String pseudoJoueur) throws JoueurExistantException {
+	for (i=0; i < listaPseudo.size(); i++ ){ 
+		if (pseudoJoueur == listaPseudo(i)){
+			throw new MetierException("ya existe un jugador con ese pseudonimo ");
 		}
 	}
+}
+
 //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de 
 //pseudonimos, la persona a inscribirse posee el mismo pesudonimo
 
-
-   
-   
-   /**
+/**
 	 * supprimer un joueur. 
 	 * 
 	 * @param nom   le nom du joueur 
@@ -194,37 +208,33 @@ linkedList <String> listaComp = new linkedList(),
 	 * @return le nombre de jetons à rembourser  au joueur qui vient d'être désinscrit.
 	 * 
 	 */
-	public long desinscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurInexistantException, JoueurException {
-		return 0;
+public long desinscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurInexistantException, JoueurException {
+	return 0;
+}
+
+
+  
+public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
+	for (i=1; i < listaPass.size(); i++ ){ 
+		if (passwordGestionnaire == listaPass(i)){
+			throw new MetierException("password invalido ");
+		}
 	}
-
-
+}
   
-   public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-      for (i=1; i < listaPass.size(); i++ ){ 
-          if (passwordGestionnaire == listaPass(i)){
-          throw new MetierException("password invalido "); 
-
-	      }
-       }
-     }
-
-  
-  
-   public SiteDeParisMetier(String pseudoJoueur,String nomJoueur, String PrenomJoueur) throws MetierException {
-      for (i=1; i < listaPseudo.size(); i++ ){ 
-            if (pseudoJoueur =! listaPseudo(i)){
-            throw new MetierException("datos invalidos"); 
-            }
-          else if (nomJoueur =! listaNom(i)){
-           throw new MetierException("datos invalidos "); 
-            }
-          else if (prenomJoueur =! listaPrenom(i)){
-             throw new MetierException("datos invalidos  "); 
-            }
-
-         }
-     }
+public SiteDeParisMetier(String pseudoJoueur,String nomJoueur, String PrenomJoueur) throws MetierException {
+	for (i=1; i < listaPseudo.size(); i++ ){
+		if (pseudoJoueur =! listaPseudo(i)){
+			throw new MetierException("datos invalidos");
+		}
+		else if (nomJoueur =! listaNom(i)){
+			throw new MetierException("datos invalidos ");
+		}
+		else if (prenomJoueur =! listaPrenom(i)){
+			throw new MetierException("datos invalidos  ");
+		}
+	}
+}
      
      
      
@@ -249,20 +259,16 @@ linkedList <String> listaComp = new linkedList(),
 	 * si deux compétiteurs ont le même nom, si la date de clôture 
 	 * n'est pas instanciée ou est dépassée.
 	 */
-	public void ajouterCompetition(String competition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException  {
-
+public void ajouterCompetition(String competition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException  {
+}
+	   
+public SiteDeParisMetier (String competition) throws CompetitionExistanteException {
+	for (i=0, i<listaComp,i++){
+		if (competition == listaComp[i]) {
+		//continuar
+		}
 	}
-	   
-	 public SiteDeParisMetier (String competition) throws CompetitionExistanteException {
-		 for (i=0, i<listaComp,i++){
-		   if (competition == listaComp[i]) {
-		   	
-		   }
-		 
-		 }
-	 
-	 }
-	   
+}
 	   
 	   
 
@@ -298,9 +304,8 @@ linkedList <String> listaComp = new linkedList(),
 	 * si la date de clôture de la compétition est dans le futur.
 	 * 
 	 */	
-	public void solderVainqueur(String competition, String vainqueur, String passwordGestionnaire) throws MetierException,  CompetitionInexistanteException, CompetitionException  {
-
-	}
+public void solderVainqueur(String competition, String vainqueur, String passwordGestionnaire) throws MetierException,  CompetitionInexistanteException, CompetitionException  {
+}
 
 
 
@@ -346,10 +351,8 @@ linkedList <String> listaComp = new linkedList(),
 	 * 
 	 */
 
-	public void debiterJoueur(String nom, String prenom, String pseudo, long sommeEnJetons, String passwordGestionnaire) throws  MetierException, JoueurInexistantException, JoueurException {
-
-	}
-
+public void debiterJoueur(String nom, String prenom, String pseudo, long sommeEnJetons, String passwordGestionnaire) throws  MetierException, JoueurInexistantException, JoueurException {
+}
 
 
 	/** 
@@ -370,15 +373,9 @@ linkedList <String> listaComp = new linkedList(),
 	 *  <li>       le total de jetons engagés dans ses mises en cours. </li>
 	 *  </ul>
 	 */
-	public LinkedList <LinkedList <String>> consulterJoueurs(String passwordGestionnaire) throws MetierException {
-		return new LinkedList <LinkedList <String>>();
-	}
-
-
-
-
-
-
+public LinkedList <LinkedList <String>> consulterJoueurs(String passwordGestionnaire) throws MetierException {
+	return new LinkedList <LinkedList <String>>();
+}
 
 
 	// Les méthodes avec mot de passe utilisateur
@@ -407,9 +404,8 @@ linkedList <String> listaComp = new linkedList(),
 	 * si <code>pseudo</code> ou <code>password</code> sont invalides, 
 	 * si le <code>compteEnJetons</code> du joueur est insuffisant (il deviendrait négatif).
 	 */
-    public void miserVainqueur(String pseudo, String passwordJoueur, long miseEnJetons, String competition, String vainqueurEnvisage) throws MetierException, JoueurInexistantException, CompetitionInexistanteException, CompetitionException, JoueurException  {
-
-	}
+public void miserVainqueur(String pseudo, String passwordJoueur, long miseEnJetons, String competition, String vainqueurEnvisage) throws MetierException, JoueurInexistantException, CompetitionInexistanteException, CompetitionException, JoueurException  {
+}
 
 
     
@@ -426,9 +422,9 @@ linkedList <String> listaComp = new linkedList(),
 	 *  <li>       la date de clôture de la compétition. </li>
 	 *  </ul>
 	 */
-	public LinkedList <LinkedList <String>> consulterCompetitions(){
-		return new LinkedList <LinkedList <String>>();
-	} 
+public LinkedList <LinkedList <String>> consulterCompetitions(){
+	return new LinkedList <LinkedList <String>>();
+} 
 
 	/**
 	 * connaître  la liste des noms des compétiteurs d'une compétition.  
@@ -441,9 +437,9 @@ linkedList <String> listaComp = new linkedList(),
 	 * 
 	 * @return la liste des compétiteurs de la  compétition.
 	 */
-	public LinkedList <String> consulterCompetiteurs(String competition) throws CompetitionException, CompetitionInexistanteException{
-		return new LinkedList <String> ();
-	}
+public LinkedList <String> consulterCompetiteurs(String competition) throws CompetitionException, CompetitionInexistanteException{
+	return new LinkedList <String> ();
+}
 
 	/**
 	 * vérifier la validité du password du gestionnaire.
@@ -453,13 +449,10 @@ linkedList <String> listaComp = new linkedList(),
 	 * @throws MetierException   levée 
 	 * si le <code>passwordGestionnaire</code> est invalide.  
 	 */
-	protected void validitePasswordGestionnaire(String passwordGestionnaire) throws MetierException {
-	    if (passwordGestionnaire==null) throw new MetierException();
-	    if (!passwordGestionnaire.matches("[0-9A-Za-z]{8,}")) throw new MetierException();
+protected void validitePasswordGestionnaire(String passwordGestionnaire) throws MetierException {
+	if (passwordGestionnaire==null) throw new MetierException();{
 	}
-
-
-
+	if (!passwordGestionnaire.matches("[0-9A-Za-z]{8,}")) throw new MetierException();{}
 }
 
 
