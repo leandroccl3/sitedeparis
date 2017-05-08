@@ -81,6 +81,29 @@ public class SiteDeParisMetier {
 	 * @return le mot de passe (déterminé par le site) du nouveau joueur inscrit.
 	 */
 	public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
+		
+		//Preguntar como evaluo la validez del password del gestionnaire
+		
+		if (passwordGestionnaire=="valide"){
+			for (int i=0; i < listaNom.size(); i++ ){
+				if (nom == listaNom(i)){
+					if (prenom == listaPrenom(i)){
+						throw new JoueurExistantException("ya existe un jugador con ese Nombre y Apellido ");//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
+						}
+					}
+				}
+			for (int i=0; i < listaPseudo.size(); i++ ){
+				if (pseudo == listaPseudo(i)){
+					throw new JoueurException("ya existe un jugador con ese pseudonimo "); //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de pseudonimos, la persona a inscribirse posee el mismo pesudonimo
+					}
+				}
+			}
+		else{
+			throw new MetierException("ya existe un jugador con ese pseudonimo "); //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de pseudonimos, la persona a inscribirse posee el mismo pesudonimo
+			
+		}
+				
+		
 		return "unPasswordUnique";
 	}
 
