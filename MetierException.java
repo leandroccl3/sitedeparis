@@ -14,16 +14,3 @@ public class MetierException extends Exception {
    }
 
 
-//password gestionaire
-
-public class TestPasswordGestionnaire{  
-       public static void main(String args[]){  
-              try{  
-                     passwordGestionnaire==null;
-                     passwordGestionnaire=="Ax-dgh1".
-                     passwordGestionnaire=="axfdgh".
-                           
-              }  
-              catch(ArithmeticException e){System.out.println("EL password del gestionario no puede ser nulo");}
-       }  
-}  
