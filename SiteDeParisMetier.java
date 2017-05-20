@@ -1,6 +1,9 @@
 package siteParis;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
+
+
 /**
 *
 * @author Bernard Prou et Julien Mallet
@@ -37,7 +40,13 @@ import java.util.LinkedList;
 * </ul></li></ul>
 */
 public class SiteDeParisMetier {
-/**
+	
+	private String passwordGestionnaire;
+	private LinkedList<Joueur> joueurs;
+	private LinkedList<Competition> competitions;
+    
+	
+	/**
 * constructeur de <code>SiteDeParisMetier</code>.
 *
 * @param passwordGestionnaire le password du gestionnaire.
@@ -46,7 +55,13 @@ public class SiteDeParisMetier {
 * si le <code>passwordGestionnaire</code> est invalide
 */
 public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
-}
+	if (passwordGestionnaire==null) throw new MetierException();
+	if (!passwordGestionnaire.matches("[0-9A-Za-z],{8,}")) throw new MetierException();
+	this.passwordGestionnaire=passwordGestionnaire;
+	this.joueurs= new LinkedList<Joueur>();
+	this.competitions = new LinkedList<Competition>();
+	}
+
 // Les méthodes du gestionnaire (avec mot de passe gestionnaire)
 /**
 * inscrire un joueur.
@@ -65,39 +80,18 @@ public SiteDeParisMetier(String passwordGestionnaire) throws MetierException {
 * @return le mot de passe (déterminé par le site) du nouveau joueur inscrit.
 */
 public String inscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurExistantException, JoueurException {
-
-	ArrayList<String> joueurs = new ArrayList<String>();
-	
-	String[] joueur = new String[3];
-
-	joueur[0] = nom;
-	joueur[1] = prenom;
-	joueur[2] = pseudo;
-	
-	joueurs.add(joueur);
-	
-	
-	
-	//Comme je peux evaluer la valitide d'un mot de pass d'un gestionnaire?
-	if (passwordGestionnaire=="valide"){
-		for (int i=0; i < joueurs.size(); i++ ){//faire questions
-			if (nom == joueur(0)){
-				if (prenom == listaJoueurs(i)){
-					throw new JoueurExistantException("Il y a un joueur avec le meme nom et prenom");//Esta excepcion se ejecuta si comparando elemento a elemento de la lista de nombres y apellidos, la persona a inscribirse posee el mismo nombre y el mismo apellido
-					}
-				}
-			}
-		for (int i=0; i < listaJoueurs.size(); i++ ){
-			if (pseudo == listaJoueurs(i)){
-				throw new JoueurException("Il y a un joueur avec le meme pseudo"); //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de pseudonimos, la persona a inscribirse posee el mismo pesudonimo
-				}
-			}
+    validitePasswordGestionnaire(passwordGestionnaire);  
+	validiteNomPrenomPseudoJoueur(nom, prenom, pseudo);    //terminar metodo
+	for (Joueur j:joueurs){
+		if( (j.getNom().equals(nom)) && (j.getPrenom().equals(prenom)) ) throw new JoueurExistantException();
+		if (j.getPseudo().equals(pseudo)) throw new JoueurExistantException();
 		}
-	else{
-		throw new MetierException("Le mot de pass du gestionaire est invalide"); //Esta excepcion se ejecuta si comparando elemento a elemento de la lista de pseudonimos, la persona a inscribirse posee el mismo pesudonimo
-		}
-	return "unPasswordUnique";
+	String pass = creationPasswordJoueur(nom,prenom);
+	Joueur j=new Joueur(nom,prenom,pseudo,pass);   ///////////////////////// ERROR
+	joueurs.add(j);
+	return (pass);
 	}
+
 /**
 * supprimer un joueur.
 *
@@ -118,7 +112,24 @@ public String inscrireJoueur(String nom, String prenom, String pseudo, String pa
 *
 */
 public long desinscrireJoueur(String nom, String prenom, String pseudo, String passwordGestionnaire) throws MetierException, JoueurInexistantException, JoueurException {
-return 0;
+	validitePasswordGestionnaire(passwordGestionnaire);  
+	validiteNomPrenomPseudoJoueur(nom, prenom, pseudo);
+	boolean existantJoueur = false;
+	long nomJetons=0;
+	int index=-1;
+	for (Joueur j:joueurs){
+		index++;
+		if( (j.getNom().equals(nom)) && (j.getPrenom().equals(prenom)) && (j.getPseudo().equals(pseudo))){
+			existantJoueur = true;
+			nomJetons=j.getNbreJetons();
+		};
+	}
+	if (existantJoueur = false) throw new JoueurInexistantException();
+	else {
+		joueurs.remove(index);
+		}
+	
+	return (nomJetons);
 }
 /**
 * ajouter une compétition.
@@ -139,7 +150,33 @@ return 0;
 * si deux compétiteurs ont le même nom, si la date de clôture
 * n'est pas instanciée ou est dépassée.
 */
-public void ajouterCompetition(String competition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException {
+public void ajouterCompetition(String nomCompetition, DateFrancaise dateCloture, String [] competiteurs, String passwordGestionnaire) throws MetierException, CompetitionExistanteException, CompetitionException {
+	validitePasswordGestionnaire(passwordGestionnaire); 
+	if (nomCompetition==null) throw new MetierException();
+	validiteNomCompetition(nomCompetition);
+	for (Competition j:competitions){
+		if(j.getNomCompetition().equals(nomCompetition)) throw new CompetitionExistanteException(); 
+		}
+	if ((competiteurs.length)<2) throw new CompetitionException();
+	for (String c:competiteurs){
+		validiteNomCompetiteur(c);
+		
+	if (dateCloture==null||(dateCloture.estDansLePasse())) throw new CompetitionException();
+	int j=0;
+	for(String c1:competiteurs){
+		j++;
+		int k=0;
+		for (String c2:competiteurs){
+			k++;
+			if (c1.equals(c2) && !(j==k)) throw new CompetitionException();
+			}
+		}
+	competitions.add((new Competition(nomCompetition, dateCloture, competiteurs)));
+	}
+	
+	
+	
+	
 }
 /**
 * solder une compétition vainqueur (compétition avec vainqueur).
@@ -173,6 +210,60 @@ public void ajouterCompetition(String competition, DateFrancaise dateCloture, St
 *
 */	
 public void solderVainqueur(String competition, String vainqueur, String passwordGestionnaire) throws MetierException, CompetitionInexistanteException, CompetitionException {
+	validitePasswordGestionnaire(passwordGestionnaire);
+	validiteNomCompetition(competition);
+	validiteNomCompetiteur(vainqueur);
+	int i=-1;
+	boolean trouveCompetition=false;
+	for(Competition c:competitions){
+		i++;
+		if (c.getNom().equals(competition)){
+			trouveCompetition=true;
+			break;
+			}
+		}
+	if (trouveCompetition==false){throw new CompetitionInexistanteException();}
+	String[] listeCompetiteurs = (competitions.get(i)).getCompetiteurs();
+	boolean trouveVainqueur=false;
+	for (String c:listeCompetiteurs){
+		if (c.equals(vainqueur)){
+			trouverVainqueur=true;
+			break;
+			}
+		}
+	if (trouveVainqueur==false){throw new CompetitionException();}
+	DateFrancaise dateCloture = (competitions.get(i)).getDateCloture();
+	if (dateCloture==null) throw new competitionException();
+	if(!(dateCloture.estDansLePasse())) throw new CompetitionException();
+	long jetonsMisesVainqueur=0;
+	long jetonsMisesCompetition=0;
+	LinkedList<Pari> listeParis=(competitions.get(i)).getParis();
+	for(Pari p: listeParis){
+		if(vainqueur.equals(p.getVainqueurEnvisage())){
+			jetonsMisesVainqueur+=p.getMiseEnJetons();
+			}
+		jetonsMisesCompetition+=p.getMiseEnJetons();
+	}
+	Joueur j=null;
+	if(jetonsMisesVainqueur==0){
+		for(Pari p: listeParis){
+			j=p.getJoueur();
+			j=crediter((int) p.getMiseEnJetons());
+			j.getPari().removeFirstOccurrence(p);
+			}
+		}
+	}
+else{
+	for(Pari p: listeParis){
+		j=p.getJoueur();
+		if(vainqueur.equals(p.getVainqueurEnvisage())){
+			long gain=0;
+			gain=p.getMiseEnJetons()*jetonsMiosesCompetition/jetonsMisesVainqueur;
+			j.crediter((int) gain)
+			}
+		j.getPari().removeFirsOcurrece(p);
+		}
+	}competitions.remove(i);
 }
 /**
 * créditer le compte en jetons d'un joueur du site de paris.
@@ -294,8 +385,34 @@ return new LinkedList <String> ();
 * @throws MetierException levée
 * si le <code>passwordGestionnaire</code> est invalide.
 */
+
+//creacion de metodos de validacion
+
 protected void validitePasswordGestionnaire(String passwordGestionnaire) throws MetierException {
 if (passwordGestionnaire==null) throw new MetierException();
 if (!passwordGestionnaire.matches("[0-9A-Za-z]{8,}")) throw new MetierException();
 }
+
+
+
+protected void validiteNomPrenomPseudoJoueur(String nom,String prenom,String pseudo){//terminar metodo
+	}
+
+protected String creationPasswordJoueur(String nom,String prenom){      // terminar
+	int numRandom = (int)(Math.random()*10000); 
+	numRandom=numRandom+10000000;
+	String numRan=Integer.toString(numRandom);
+	return (nom+prenom+numRan);
+	}
+
+protected void validiteNomCompetition(String nomCompetition) throws CompetitionException{
+	if(	nomCompetition==null) throw new CompetitionException();
+	if (!nomCompetition.mqtches("[0-9A-Za-z-_.]{4,}")) throw new CompetitionException();
+	}
+
+protected void validiteNomCompetiteur(String nom) throws CompetitionException{
+	if(nom==null) throw new CompetitionException();
+	if(!nom.matches("[0-9A-Za-z-_]{4,}")) throw new CompetitionException();
+}
+
 }
